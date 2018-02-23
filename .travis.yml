@@ -4,9 +4,10 @@ node_js:
 cache:
   directories:
   - node_modules
+
 script:
   - npm test
-  - npm run build
+
 
 deploy:
 - provider: s3
@@ -30,6 +31,7 @@ deploy:
   on: *2
 
 script:
+  - npm run build
   - zip -r frontend-latest build/*
   - mkdir -p dpl_cd_upload
   - mv frontend-latest.zip dpl_cd_upload/frontend-latest.zip
