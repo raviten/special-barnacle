@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import RiskTypeForm from './Scripts/RiskType/RiskTypeForm';
 import RiskType from './Scripts/RiskType/RiskType';
+import Risk from './Scripts/Risks/Risks';
 import Home from './Scripts/Home';
 import {   BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppBar from 'material-ui/AppBar';
@@ -42,8 +43,7 @@ const Main = () => (
         <Route exact path='/' component={Home}/>
         <Route exact path='/risk-type' component={RiskType}/>
         <Route path='/risk-type/:pk' component={RiskTypeForm}/>
-        <Route exact path='/risks' component={RiskType}/>
-        <Route exact path='/risks/:pk' component={RiskType}/>
+        <Route exact path='/risks' component={Risk}/>
       </Switch>
     </Router>
   </main>

@@ -77,7 +77,7 @@ class FieldType extends React.Component {
       value = Number(value)
     }
     let name = this.state.ft.name;
-    this.updateValue(this.state.ft.id, {key: name, value: value});
+    this.updateValue(name, {key: this.state.ft.id, value: value});
   }
 
   renderFieldType(ft) {

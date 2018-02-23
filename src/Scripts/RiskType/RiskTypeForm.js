@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import * as ApiConfig from '../ApiConfig';
-import getHeader from '../helper';
+import getHeader, {getUserHeader} from '../helper';
 import FieldType from './FieldType';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -20,7 +20,7 @@ class RiskTypeForm extends React.Component {
       riskType: {
         field_types: []
       },
-      form: {}
+      form: {risk_type: riskTypeId}
     };
   }
 
@@ -51,26 +51,26 @@ class RiskTypeForm extends React.Component {
     });
     this.serverRequest =
        axios({
-        method: "GET",
+        method: "POST",
         url: url,
-        headers: getHeader()
+        headers: getUserHeader(),
+        data: JSON.stringify(_this.state.form)
       }).then(function(result) {
-        console.log(result);
         _this.setState({
-          formSubmitting: false
+          formSubmitting: true
         });
+        window.location.href = '/risks';
       }).catch(function(err){
-        console.log(err);
         _this.setState({
           formSubmitting: false
         });
       })
-    console.log('Submitted');
   }
 
   updateFormValue(k, v) {
     let updatedForm = this.state.form;
     updatedForm[k] = v;
+    console.log(updatedForm);
     this.setState({form: updatedForm})
   }
 
