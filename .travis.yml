@@ -32,6 +32,7 @@ deploy:
 
 script:
   - npm run build
-  - zip -r frontend-latest build/*
+  - rm -rf node_modules
+  - zip -r frontend-latest *
   - mkdir -p dpl_cd_upload
   - mv frontend-latest.zip dpl_cd_upload/frontend-latest.zip
